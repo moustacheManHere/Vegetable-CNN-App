@@ -7,3 +7,4 @@ Compatibility Issues:
 Retraining:
     - Dataset is located in DL folder but gitignore will block it cuz its too big
     - I plan to train the model first. 
+    - Since I will be using this model in "production", I will train it on the full dataset without any train-test-val splits -> Maximise the contexxt model has
