@@ -22,4 +22,4 @@ Issues Flow:
     4. Issue moves to "In progress" Section indicating it is being worked on
     5. Issue moves to "Documentation" Section indicating it is complete and need to document the methodology under Docs/ 
         -> If issue is trivial and doesn't need documentation it will go straight to Closed
-    6. Issue is closed -> Can automate by committing with "git commit -m "Finished x" -m "Closes #72"
+    6. Issue is closed -> Can automate by committing with "git commit -m "Finished x Closes #72"
