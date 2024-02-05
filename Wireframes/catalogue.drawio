@@ -1,0 +1,115 @@
+<mxfile host="app.diagrams.net" modified="2024-02-04T15:51:27.289Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" etag="CtHyfjiheCa-VDqHmNs5" version="23.1.1" type="gitlab">
+  <diagram name="Page-1" id="03018318-947c-dd8e-b7a3-06fadd420f32">
+    <mxGraphModel dx="1242" dy="819" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="677b7b8949515195-1" value="" style="whiteSpace=wrap;html=1;rounded=0;shadow=0;labelBackgroundColor=none;strokeColor=#000000;strokeWidth=1;fillColor=none;fontFamily=Verdana;fontSize=12;fontColor=#000000;align=center;comic=1;" parent="1" vertex="1">
+          <mxGeometry x="20" y="20" width="1060" height="810" as="geometry" />
+        </mxCell>
+        <mxCell id="677b7b8949515195-9" value="" style="line;strokeWidth=1;html=1;rounded=0;shadow=0;labelBackgroundColor=none;fillColor=none;fontFamily=Verdana;fontSize=14;fontColor=#000000;align=center;comic=1;" parent="1" vertex="1">
+          <mxGeometry x="20" y="140" width="1060" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="677b7b8949515195-10" value="" style="whiteSpace=wrap;html=1;rounded=0;shadow=0;labelBackgroundColor=none;strokeWidth=1;fillColor=none;fontFamily=Verdana;fontSize=12;align=center;comic=1;" parent="1" vertex="1">
+          <mxGeometry x="30" y="160" width="1040" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="677b7b8949515195-11" value="Tommy&#39;s Friends (Will expand soon hehe...)" style="text;html=1;points=[];align=left;verticalAlign=top;spacingTop=-4;fontSize=14;fontFamily=Verdana" parent="1" vertex="1">
+          <mxGeometry x="360" y="172.5" width="340" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="677b7b8949515195-16" value="" style="verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;strokeWidth=1;shape=mxgraph.mockup.graphics.simpleIcon;strokeColor=#999999;rounded=0;labelBackgroundColor=none;fontFamily=Verdana;fontSize=14;fontColor=#000000;comic=1;" parent="1" vertex="1">
+          <mxGeometry x="120" y="250" width="230" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="677b7b8949515195-26" value="" style="whiteSpace=wrap;html=1;rounded=0;shadow=0;labelBackgroundColor=none;strokeWidth=1;fillColor=none;fontFamily=Verdana;fontSize=12;align=center;comic=1;" parent="1" vertex="1">
+          <mxGeometry x="120" y="370" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="677b7b8949515195-42" value="Bean" style="text;html=1;points=[];align=left;verticalAlign=top;spacingTop=-4;fontSize=14;fontFamily=Verdana" parent="1" vertex="1">
+          <mxGeometry x="210" y="380" width="170" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="80LmOYvnEw3mfDIwuEjn-1" value="VegeFacts" style="whiteSpace=wrap;html=1;rounded=0;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=28;align=center;comic=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="60" width="190" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="80LmOYvnEw3mfDIwuEjn-2" value="Home" style="text;html=1;points=[];align=left;verticalAlign=top;spacingTop=-4;fontSize=14;fontFamily=Verdana" vertex="1" parent="1">
+          <mxGeometry x="550" y="75" width="60" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="80LmOYvnEw3mfDIwuEjn-3" value="Predict" style="text;html=1;points=[];align=left;verticalAlign=top;spacingTop=-4;fontSize=14;fontFamily=Verdana" vertex="1" parent="1">
+          <mxGeometry x="620" y="75" width="60" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="80LmOYvnEw3mfDIwuEjn-4" value="Veges!" style="text;html=1;points=[];align=left;verticalAlign=top;spacingTop=-4;fontSize=14;fontFamily=Verdana" vertex="1" parent="1">
+          <mxGeometry x="700" y="75" width="60" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="80LmOYvnEw3mfDIwuEjn-5" value="History" style="text;html=1;points=[];align=left;verticalAlign=top;spacingTop=-4;fontSize=14;fontFamily=Verdana" vertex="1" parent="1">
+          <mxGeometry x="770" y="75" width="60" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="80LmOYvnEw3mfDIwuEjn-6" value="Profile" style="text;html=1;points=[];align=left;verticalAlign=top;spacingTop=-4;fontSize=14;fontFamily=Verdana" vertex="1" parent="1">
+          <mxGeometry x="850" y="75" width="60" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="80LmOYvnEw3mfDIwuEjn-7" value="Login/Signup" style="text;html=1;points=[];align=left;verticalAlign=top;spacingTop=-4;fontSize=14;fontFamily=Verdana" vertex="1" parent="1">
+          <mxGeometry x="920" y="75" width="60" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="80LmOYvnEw3mfDIwuEjn-8" value="Tommy&#39;s Childhood Friend" style="text;html=1;points=[];align=left;verticalAlign=top;spacingTop=-4;fontSize=14;fontFamily=Verdana" vertex="1" parent="1">
+          <mxGeometry x="140" y="425" width="190" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="80LmOYvnEw3mfDIwuEjn-9" value="" style="verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;strokeWidth=1;shape=mxgraph.mockup.graphics.simpleIcon;strokeColor=#999999;rounded=0;labelBackgroundColor=none;fontFamily=Verdana;fontSize=14;fontColor=#000000;comic=1;" vertex="1" parent="1">
+          <mxGeometry x="390" y="250" width="230" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="80LmOYvnEw3mfDIwuEjn-10" value="" style="whiteSpace=wrap;html=1;rounded=0;shadow=0;labelBackgroundColor=none;strokeWidth=1;fillColor=none;fontFamily=Verdana;fontSize=12;align=center;comic=1;" vertex="1" parent="1">
+          <mxGeometry x="390" y="370" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="80LmOYvnEw3mfDIwuEjn-11" value="Carrot" style="text;html=1;points=[];align=left;verticalAlign=top;spacingTop=-4;fontSize=14;fontFamily=Verdana" vertex="1" parent="1">
+          <mxGeometry x="480" y="380" width="170" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="80LmOYvnEw3mfDIwuEjn-12" value="Tommy&#39;s Beach Buddy" style="text;html=1;points=[];align=left;verticalAlign=top;spacingTop=-4;fontSize=14;fontFamily=Verdana" vertex="1" parent="1">
+          <mxGeometry x="410" y="425" width="210" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="80LmOYvnEw3mfDIwuEjn-13" value="" style="verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;strokeWidth=1;shape=mxgraph.mockup.graphics.simpleIcon;strokeColor=#999999;rounded=0;labelBackgroundColor=none;fontFamily=Verdana;fontSize=14;fontColor=#000000;comic=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="250" width="230" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="80LmOYvnEw3mfDIwuEjn-14" value="" style="whiteSpace=wrap;html=1;rounded=0;shadow=0;labelBackgroundColor=none;strokeWidth=1;fillColor=none;fontFamily=Verdana;fontSize=12;align=center;comic=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="370" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="80LmOYvnEw3mfDIwuEjn-15" value="Potato" style="text;html=1;points=[];align=left;verticalAlign=top;spacingTop=-4;fontSize=14;fontFamily=Verdana" vertex="1" parent="1">
+          <mxGeometry x="790" y="380" width="170" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="80LmOYvnEw3mfDIwuEjn-16" value="Tommy&#39;s Gym Mate" style="text;html=1;points=[];align=left;verticalAlign=top;spacingTop=-4;fontSize=14;fontFamily=Verdana" vertex="1" parent="1">
+          <mxGeometry x="720" y="425" width="190" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="80LmOYvnEw3mfDIwuEjn-17" value="" style="verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;strokeWidth=1;shape=mxgraph.mockup.graphics.simpleIcon;strokeColor=#999999;rounded=0;labelBackgroundColor=none;fontFamily=Verdana;fontSize=14;fontColor=#000000;comic=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="510" width="230" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="80LmOYvnEw3mfDIwuEjn-18" value="" style="whiteSpace=wrap;html=1;rounded=0;shadow=0;labelBackgroundColor=none;strokeWidth=1;fillColor=none;fontFamily=Verdana;fontSize=12;align=center;comic=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="630" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="80LmOYvnEw3mfDIwuEjn-19" value="Broccoli" style="text;html=1;points=[];align=left;verticalAlign=top;spacingTop=-4;fontSize=14;fontFamily=Verdana" vertex="1" parent="1">
+          <mxGeometry x="210" y="640" width="170" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="80LmOYvnEw3mfDIwuEjn-20" value="Tommy&#39;s Old Rival" style="text;html=1;points=[];align=left;verticalAlign=top;spacingTop=-4;fontSize=14;fontFamily=Verdana" vertex="1" parent="1">
+          <mxGeometry x="140" y="685" width="220" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="80LmOYvnEw3mfDIwuEjn-21" value="" style="verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;strokeWidth=1;shape=mxgraph.mockup.graphics.simpleIcon;strokeColor=#999999;rounded=0;labelBackgroundColor=none;fontFamily=Verdana;fontSize=14;fontColor=#000000;comic=1;" vertex="1" parent="1">
+          <mxGeometry x="390" y="510" width="230" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="80LmOYvnEw3mfDIwuEjn-22" value="" style="whiteSpace=wrap;html=1;rounded=0;shadow=0;labelBackgroundColor=none;strokeWidth=1;fillColor=none;fontFamily=Verdana;fontSize=12;align=center;comic=1;" vertex="1" parent="1">
+          <mxGeometry x="390" y="630" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="80LmOYvnEw3mfDIwuEjn-23" value="Papaya" style="text;html=1;points=[];align=left;verticalAlign=top;spacingTop=-4;fontSize=14;fontFamily=Verdana" vertex="1" parent="1">
+          <mxGeometry x="480" y="640" width="170" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="80LmOYvnEw3mfDIwuEjn-24" value="Tommy&#39;s Neighbour" style="text;html=1;points=[];align=left;verticalAlign=top;spacingTop=-4;fontSize=14;fontFamily=Verdana" vertex="1" parent="1">
+          <mxGeometry x="410" y="685" width="190" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="80LmOYvnEw3mfDIwuEjn-25" value="" style="verticalLabelPosition=bottom;shadow=0;dashed=0;align=center;html=1;verticalAlign=top;strokeWidth=1;shape=mxgraph.mockup.graphics.simpleIcon;strokeColor=#999999;rounded=0;labelBackgroundColor=none;fontFamily=Verdana;fontSize=14;fontColor=#000000;comic=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="510" width="230" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="80LmOYvnEw3mfDIwuEjn-26" value="" style="whiteSpace=wrap;html=1;rounded=0;shadow=0;labelBackgroundColor=none;strokeWidth=1;fillColor=none;fontFamily=Verdana;fontSize=12;align=center;comic=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="630" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="80LmOYvnEw3mfDIwuEjn-27" value="Pumpkin" style="text;html=1;points=[];align=left;verticalAlign=top;spacingTop=-4;fontSize=14;fontFamily=Verdana" vertex="1" parent="1">
+          <mxGeometry x="790" y="640" width="170" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="80LmOYvnEw3mfDIwuEjn-28" value="Tommy&#39;s Big Brother" style="text;html=1;points=[];align=left;verticalAlign=top;spacingTop=-4;fontSize=14;fontFamily=Verdana" vertex="1" parent="1">
+          <mxGeometry x="720" y="685" width="190" height="25" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
