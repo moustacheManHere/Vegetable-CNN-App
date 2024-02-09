@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="container my-4">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <img src="../static/images/error.png" alt="Error Image" class="img-fluid mb-4">
+            <div class="error-box p-4">
+                <h1 class="display-4">Oops! Something went wrong.</h1>
+                <p class="lead">We're sorry, but there was an error processing your request.</p>
+                <p>Please try again later or contact support if the problem persists. Error Code: {{error_code}}</p>
+                <a href="/" class="btn btn-primary btn-lg mt-3">Go back to homepage</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
