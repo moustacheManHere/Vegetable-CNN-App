@@ -8,6 +8,10 @@ from flask import json, jsonify
 def index_page():
     return render_template("index.html")
 
+@app.route('/predict')
+def predict():
+    return render_template("predict.html")
+
 @app.errorhandler(Exception)
 def handle_error(e):
     error_code = getattr(e, 'code', 500)  
