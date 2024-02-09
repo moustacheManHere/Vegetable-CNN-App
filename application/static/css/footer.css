@@ -1,0 +1,8 @@
+.bottom-container {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #f8f9fa; /* Optional: Background color for the footer */
+    padding: 10px 0; /* Optional: Padding for the footer */
+    z-index: 1000; /* Optional: Set the z-index to ensure footer appears above other content */
+}

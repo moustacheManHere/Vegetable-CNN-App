@@ -1,6 +1,36 @@
-{% extends "layout.html" %}
+{% extends 'layout.html' %}
+
 {% block content %}
 
-Tommy the Tomato!
+<div class="container my-4">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h3 class="mt-3">Hi there! I'm Tommy the Tomato</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <img src="../static/images/tommy_the_tomato_image.png" alt="Tommy the Tomato" class="img-fluid">
+                </div>
+            </div>
+        </div>
 
-{% endblock %}
+        <div class="col-md-6 d-flex flex-column justify-content-center">
+            <div class="row">
+                <div class="col-md-12 text-center" id ="butHolder">
+                    <a href="#" class="btn btn-primary btn-lg btn-block my-3 py-4">Play a Guessing Game with Me!</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center" id ="butHolder">
+                    <a href="#" class="btn btn-success btn-lg btn-block py-4">Join my GANG!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

@@ -13,3 +13,11 @@ Creating Development Container:
     - apt-get install iputils-ping
     - docker network connect dl_network Web_Server
     - Later if needed can setup again but simply using the requirements.txt file
+
+Storing Static Files:
+    - To store static files like images, we will be using git lfs. it is not good practice to commit them as they are not like normal files and will be very ineffcient. 
+    - `curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash` to download it inside our dev container
+    - `apt-get install git-lfs` to install it.
+    - `git lfs install` to init lfs in my repo
+    - `git lfs track "application/static/images/*"` to track all images in my folder
+    - `git lfs track "Docs/Screenshots/*"`

@@ -1,0 +1,9 @@
+#butHolder {
+    display: flex;
+    justify-content: space-around;
+  }
+
+#butHolder > .btn-lg {
+    width: 100%;
+    margin: 5px;
+}
