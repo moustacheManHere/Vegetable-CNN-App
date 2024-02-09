@@ -37,7 +37,7 @@ def predict():
     if form.validate_on_submit():
         filename = photos.save(form.photo.data)
         file_url = url_for("get_file", filename= filename)
-        response = get_prediction(filename, 31) # later do dynamic size switching function
+        response = get_prediction(filename) # later do dynamic size switching function
     else:
         file_url = None
         response = None
