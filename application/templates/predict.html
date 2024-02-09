@@ -5,7 +5,22 @@
 <div class="container my-4">
     <div class="row">
         <div class="col-md-6">
-            <!--Insert prediciton interface here.-->
+            <form method="post" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+                
+                {{ form.photo(class_='form-control') }}
+
+                {% for error in form.photo.errors %}
+                    <span>{{error}}</span>
+                {% endfor %}
+
+                {{ form.submit(class_='btn btn-primary') }}
+            </form>
+            {% if file_url is not none %}
+                <div class="mt-5">
+                    <img src="{{ file_url }}" style="width: 30vw" alt="">
+                </div>
+            {% endif %}
         </div>
 
         <div class="col-md-6 d-flex flex-column justify-content-center">
