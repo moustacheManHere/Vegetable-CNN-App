@@ -5,6 +5,8 @@ Concept:
     - The vegetable catalogue will accordinly be themed to be called "Tomato's Friends". The backstory is that just like our dataset has only 15 classes, there are only 15 vegetables in tomato's gang. This branding helps us add more vegetables to this dataset and widen tomato's gang. 
     - Login/Signup will be renamed as "Join Tomato's Gang"
 
+Run App with `flask --debug run`
+
 Pages
     - Home
     - Profile
@@ -26,3 +28,6 @@ History Search:
         - Prediction Name
         - Prediction %
         - Remove?
+
+Ideas:
+    - In the /includes folder create a template that will take in any form and display its values
