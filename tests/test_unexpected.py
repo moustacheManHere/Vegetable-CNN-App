@@ -16,3 +16,7 @@ def test_predict_route(client,app, test_image):
     result_message = soup.find('h3', class_='mt-3').get_text(strip=True)
     assert "I'm" in result_message
 
+def test_error_fallback(client):
+    response = client.get('/nonexistent-route')
+    assert response.status_code == 404
+    assert b'Page not found' in response.data
