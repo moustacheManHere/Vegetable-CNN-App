@@ -4,7 +4,7 @@ import requests
 import json 
 from application import app
 import os
-
+import io
 
 def get_right_size(pilImg):
     width, height = pilImg.size
@@ -13,10 +13,9 @@ def get_right_size(pilImg):
     else:
         return 31
 
-def preprocess(image_path):
+def preprocess(image_data):
     try:
-        image_path = os.path.join("application/static/uploads", image_path)
-        image = Image.open(image_path).convert("RGB")
+        image = Image.open(io.BytesIO(image_data)).convert("RGB")
         size = get_right_size(image)
         image = image.convert("L")
         image = image.resize((size, size))  
@@ -44,8 +43,8 @@ def get_response(url, img_array):
         print(e)
         return None
     
-def get_prediction(image_path):
-    img_array = preprocess(image_path)
+def get_prediction(image_data):
+    img_array = preprocess(image_data)
     if img_array is None:
         return None
     size, img_array = img_array

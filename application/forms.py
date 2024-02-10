@@ -7,11 +7,11 @@ from wtforms import (
 from wtforms.validators import (
     InputRequired
 )
-from application import photos
+from flask_uploads import IMAGES
 
 class UploadForm(FlaskForm):
     photo = FileField(validators=[
-        FileAllowed(photos, "Only images allowed!"), # checking file extension here
+        FileAllowed(IMAGES, "Only images allowed!"), # checking file extension here
         FileRequired("Must have one file!")
     ])
 
