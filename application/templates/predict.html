@@ -33,6 +33,7 @@
                 <div class="col-md-12 text-center">
                     {% if response is not none %}
                         <h3 class="mt-3">I'm {{response[1] | round(0)}}% sure it is a {{vegetable_list[response[0]]}}!</h3>
+                        <a href="{{ url_for('vege_info', id=(response[0]+1)) }}">Learn more about {{vegetable_list[response[0]]}}s</a>
                     {% else %}  
                         <h3 class="mt-3">Elmo is not sure!</h3>
                     {% endif %}
