@@ -7,3 +7,8 @@ def get_all_vegetables():
         i.filename = "lol.txt"
         #print(i.filename)
     return query
+
+def get_one_vegetable(id):
+    query = Vegetable.query.filter_by(id=id).all()
+    
+    return query

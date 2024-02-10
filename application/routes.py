@@ -57,6 +57,18 @@ def vege_page():
     
     return render_template("catalogue.html", items=veges)
 
+@app.route('/info/<id>')
+def vege_info(id):
+    try: 
+        print("veges")
+        vege = get_one_vegetable(id)
+        
+        print(vege[0])
+    except:
+        raise ValueError() 
+    
+    return render_template("info.html", vegetable=vege[0])
+
 
 @app.errorhandler(Exception)
 def handle_error(e):
