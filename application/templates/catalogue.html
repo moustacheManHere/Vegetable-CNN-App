@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="row">
+    <h1>Tommy's Friends (Will expand soon hehe...)</h1>
+</div>
+<div class="container">
+    {% for row in items|batch(3) %}
+      <div class="row">
+        {% for item in row %}
+          <div class="col-md-4">
+            {% include 'includes/card.html' with image_src=item.image title=item.title description=item.description %}
+          </div>
+        {% endfor %}
+      </div>
+    {% endfor %}
+  </div>
+
+{% endblock content %}
