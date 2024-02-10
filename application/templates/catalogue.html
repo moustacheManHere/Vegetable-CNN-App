@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="row">
+    <h1>Tommy's Friends (Will expand soon hehe...)</h1>
+</div>
+<div class="container">
+    {% for row in items|batch(3) %}
+      <div class="row">
+        {% for item in row %}
+          <div class="col-md-4">
+            {% with image_src=item.url, title=item.name, description=item.short %}
+                {% include "includes/vegeCard.html" %}
+            {% endwith %}
+            
+          </div>
+        {% endfor %}
+      </div>
+    {% endfor %}
+  </div>
+
+{% endblock content %}

@@ -3,6 +3,7 @@ from flask import render_template, request, flash, send_from_directory, url_for
 from flask import json, jsonify
 from application.forms import UploadForm
 from application.deeplearning import get_prediction
+from application.crud import *
 import base64
 
 vegetable_list = [
@@ -43,6 +44,30 @@ def predict():
         response = None
         
     return render_template("predict.html", form = form, img_64=img_64, response = response, vegetable_list=vegetable_list) # try to have a more human response. 
+
+@app.route('/veges')
+def vege_page():
+    try: 
+        print("veges")
+        veges = get_all_vegetables()
+        
+        print(veges)
+    except:
+        raise ValueError() 
+    
+    return render_template("catalogue.html", items=veges)
+
+@app.route('/info/<id>')
+def vege_info(id):
+    try: 
+        print("veges")
+        vege = get_one_vegetable(id)
+        
+        print(vege[0])
+    except:
+        raise ValueError() 
+    
+    return render_template("info.html", vegetable=vege[0])
 
 
 @app.errorhandler(Exception)
