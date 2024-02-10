@@ -31,7 +31,7 @@ pytest:
 deployment:
   stage: deploy
   script:
-    - curl -s "$PROD_DEPLOY"
+    - curl -v "$PROD_DEPLOY"
   only:
     - releases
   dependencies:
