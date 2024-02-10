@@ -21,3 +21,6 @@ Storing Static Files:
     - `git lfs install` to init lfs in my repo
     - `git lfs track "application/static/images/*"` to track all images in my folder
     - `git lfs track "Docs/Screenshots/*"`
+
+Setting up Docker Container to run app:
+    - I faced quite some challenge trying to run my docker image cuz port 5000 was always not aviaalble. apparently on apple, the port 5000 is used by airplay. It is very weird cuz I can run my flask app directly from command line without worrying but the docker image doesn't allow me to map to port 5000. One quick and easy fix i foudn was just changing it to 5001 and it worked. 
