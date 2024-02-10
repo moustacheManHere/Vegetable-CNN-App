@@ -38,8 +38,10 @@ def predict():
         response = get_prediction(image_data)
         img_64 = base64.b64encode(image_data).decode('utf-8')
     else:
+        print(form.errors)
         img_64 = None
         response = None
+        
     return render_template("predict.html", form = form, img_64=img_64, response = response, vegetable_list=vegetable_list) # try to have a more human response. 
 
 
