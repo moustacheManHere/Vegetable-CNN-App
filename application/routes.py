@@ -2,9 +2,8 @@ from application import app
 from flask import render_template, request, flash, send_from_directory, url_for
 from flask import json, jsonify
 from application.forms import UploadForm
-from application import photos
 from application.deeplearning import get_prediction
-
+import base64
 
 vegetable_list = [
     "Bean",
@@ -32,23 +31,21 @@ def index_page():
 
 @app.route('/predict',methods=["GET","POST"])
 def predict():
-    file_url = None
     form = UploadForm()
     if form.validate_on_submit():
-        filename = photos.save(form.photo.data)
-        file_url = url_for("get_file", filename= filename)
-        response = get_prediction(filename) # later do dynamic size switching function
+        photo = form.photo.data
+        image_data = photo.read()
+        response = get_prediction(image_data)
+        img_64 = base64.b64encode(image_data).decode('utf-8')
     else:
-        file_url = None
+        print(form.errors)
+        img_64 = None
         response = None
-    return render_template("predict.html", form = form, file_url=file_url, response = response, vegetable_list=vegetable_list) # try to have a more human response. 
-
-@app.route('/uploads/<filename>')
-def get_file(filename):
-    return send_from_directory(app.config["IMAGE_LOCATION"], filename)
+        
+    return render_template("predict.html", form = form, img_64=img_64, response = response, vegetable_list=vegetable_list) # try to have a more human response. 
 
 
-#@app.errorhandler(Exception)
+@app.errorhandler(Exception)
 def handle_error(e):
     error_code = getattr(e, 'code', 500)  
     print(e)
