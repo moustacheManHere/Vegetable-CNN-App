@@ -8,21 +8,21 @@ from application.auth import *
 import base64
 
 vegetable_list = [
-    "Bean",
-    "Bitter_Gourd",
-    "Bottle_Gourd",
-    "Brinjal",
     "Broccoli",
-    "Cabbage",
     "Capsicum",
-    "Carrot",
-    "Cauliflower",
-    "Cucumber",
-    "Papaya",
-    "Potato",
-    "Pumpkin",
+    "Bottle_Gourd",
     "Radish",
-    "Tomato"
+    "Tomato",
+    "Brinjal",
+    "Pumpkin",
+    "Carrot",
+    "Papaya",
+    "Cabbage",
+    "Bitter_Gourd",
+    "Cauliflower",
+    "Bean",
+    "Cucumber",
+    "Potato"
 ]
 
 @app.route('/')
