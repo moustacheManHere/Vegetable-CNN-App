@@ -1,6 +1,6 @@
 from application import app
-from flask import render_template, abort
-from flask_login import current_user
+from flask import render_template, abort, redirect, url_for
+from flask_login import current_user,login_required, logout_user
 from application.forms import *
 from application.deeplearning import get_prediction
 from application.crud import *
@@ -74,18 +74,23 @@ def vege_info(id):
 def login():
     login = LoginForm()
     if login.validate_on_submit():
-        print("lol")
+        if checkUserCred(login):
+            return redirect(url_for("index_page"))
+        return render_template("login.html", title="Login", form=login)
     return render_template("login.html", title="Login", form=login)
 
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
     signup = SignupForm()
     if signup.validate_on_submit():
-        print("lol")
+        add_user(signup)
+        return redirect(url_for("index_page"))
     return render_template("signup.html", title="Signup", form=signup)
 
 @app.route("/profile", methods=["GET", "POST"])
 def profile():
+    if not current_user.is_authenticated:
+        abort(401)
     profForm = UpdateProfileForm()
     if profForm.validate_on_submit():
         print("lol")
@@ -95,6 +100,12 @@ def profile():
 def test_unauth_page():
     # abort(401) to call this error. 
     return render_template('unauthorized.html', error_code=401)
+
+@app.route("/api/logout")
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for("index_page"))
 
 @app.errorhandler(Exception)
 def handle_error(e):
