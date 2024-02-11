@@ -93,7 +93,8 @@ def profile():
         abort(401)
     profForm = UpdateProfileForm()
     if profForm.validate_on_submit():
-        print("lol")
+        updateProfile(current_user.get_id(), profForm)
+        return redirect(url_for("profile"))
     return render_template("profile.html", title="Profile", form=profForm)
 
 @app.route("/unauthorised")

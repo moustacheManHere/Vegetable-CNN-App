@@ -25,3 +25,20 @@ def add_user(signup):
     db.session.add(new_user)
     db.session.commit()
     return new_user.id
+
+def updateProfile(user_id, form):
+    try:
+        user = User.query.get(user_id)
+
+        if form.name.data is not None:
+            user.name = form.name.data
+
+        if form.new_password.data != "":
+            new_password = bcrypt.generate_password_hash(form.new_password.data)
+            user.password = new_password
+
+        db.session.commit()
+        return True
+    except Exception:
+        db.session.rollback()
+        return False
