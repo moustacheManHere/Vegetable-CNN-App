@@ -39,6 +39,11 @@ def predict():
         image_data = photo.read()
         response = get_prediction(image_data)
         img_64 = base64.b64encode(image_data).decode('utf-8')
+        if current_user.is_authenticated:
+            path = save_to_cloud(img_64)
+            print(path)
+            add_history(current_user.get_id(), path, response, form.comments.data)
+
     else:
         print(form.errors)
         img_64 = None
@@ -72,10 +77,13 @@ def vege_info(id):
 
 @app.route("/history", methods=["GET", "POST"])
 def history():
+    if not current_user.is_authenticated:
+        abort(401)
     form = SearchForm()
     if form.validate_on_submit():
         print("lol")
-    return render_template("history.html",form=form)
+    abort(401)
+    #return render_template("history.html",form=form)
 
 @app.route("/login", methods=["GET", "POST"])
 def login():

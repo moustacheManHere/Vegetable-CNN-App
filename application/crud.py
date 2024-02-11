@@ -4,6 +4,7 @@ import boto3
 from PIL import Image
 import base64
 from io import BytesIO
+import uuid 
 
 s3 = boto3.resource("s3")
 imgBucket = s3.Bucket("devops-ca2")
@@ -31,3 +32,29 @@ def url_to_b64(url):
         base64_image = base64.b64encode(buffer.getvalue()).decode()
     
     return "data:image/jpeg;charset=utf-8;base64,"+base64_image
+
+
+def save_to_cloud(img_data):
+    # data must be base64
+
+    #get unique filename
+    unique_id = uuid.uuid4()
+    path = f"usr_img_{unique_id}"
+
+    #check if file exists
+    try:
+        s3.Object("devops-ca2",path).load()
+        unique_id = uuid.uuid4()
+        path = f"usr_img_{unique_id}"
+    except:
+        pass
+    
+    #upload
+    obj = s3.Object("devops-ca2", path)
+    obj.put(Body=base64.b64decode(img_data))
+    return path
+
+def add_history(id, path, response, comment):
+    new_hist = History(id=id,vegeID=response[0],filename=path,percentage=response[1],comment=comment)
+    db.session.add(new_hist)
+    db.session.commit()
