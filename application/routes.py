@@ -70,6 +70,13 @@ def vege_info(id):
     
     return render_template("info.html", vegetable=vege[0])
 
+@app.route("/history", methods=["GET", "POST"])
+def history():
+    form = SearchForm()
+    if form.validate_on_submit():
+        print("lol")
+    return render_template("history.html",form=form)
+
 @app.route("/login", methods=["GET", "POST"])
 def login():
     login = LoginForm()
