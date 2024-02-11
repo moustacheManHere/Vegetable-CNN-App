@@ -1,4 +1,5 @@
-FROM python:3.9.18
+FROM python:3.9.18-slim
+
 RUN apt-get update -y
 RUN apt-get install build-essential -y
 
@@ -12,4 +13,4 @@ COPY . .
 
 EXPOSE 5001
 
-CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:5001", "app:app"]
+CMD ["gunicorn", "--preload", "-w", "2", "-b", "0.0.0.0:5001", "app:app"]
