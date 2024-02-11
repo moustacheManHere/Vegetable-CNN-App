@@ -3,6 +3,7 @@ from application import app as application
 from application import db as database
 import os 
 import io
+from application.models import populate_vege
 
 @pytest.fixture
 def app():
@@ -23,5 +24,6 @@ def test_image():
 def db(app):
     with app.app_context():
         database.create_all()
+        populate_vege(database)
         yield database
         database.drop_all()

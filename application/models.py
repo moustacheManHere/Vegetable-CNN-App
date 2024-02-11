@@ -21,7 +21,7 @@ class Vegetable(db.Model):
         self.short = short
         self.description = description
 
-def populate_vege():
+def populate_vege(db):
     if Vegetable.query.count() ==  0:
         try:
             df = pd.read_csv("./application/static/vegeDB.csv")
