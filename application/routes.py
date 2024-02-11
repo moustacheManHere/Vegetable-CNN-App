@@ -84,6 +84,13 @@ def signup():
         print("lol")
     return render_template("signup.html", title="Signup", form=signup)
 
+@app.route("/profile", methods=["GET", "POST"])
+def profile():
+    profForm = UpdateProfileForm()
+    if profForm.validate_on_submit():
+        print("lol")
+    return render_template("profile.html", title="Profile", form=profForm)
+
 @app.errorhandler(Exception)
 def handle_error(e):
     error_code = getattr(e, 'code', 500)  
