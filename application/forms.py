@@ -4,7 +4,8 @@ from wtforms import (
     SubmitField,
     StringField,
     PasswordField,
-    FileField
+    FileField,
+    TextAreaField
 )
 from wtforms.validators import (
     Optional,
@@ -19,6 +20,7 @@ class UploadForm(FlaskForm):
         FileAllowed(IMAGES, "Only images allowed!"), # checking file extension here
         FileRequired("Must have one file!")
     ])
+    comments = TextAreaField("Comments") 
 
     submit = SubmitField("Upload")
 

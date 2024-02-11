@@ -36,4 +36,6 @@ User Authentication:
     - For user auth, its mostly the same as CA2
     - I edited the handling of permissions. So like if the user goes to a route they are not supposed to it will show a nice error page instead of reidrecting them to the home page. 
     - I also edited the pytest to be more effective and only test boundary cases
-    
+
+Search Feature:
+    - Initially I wanted to add tags. so user can add tags to the images and search them easily later. but instead of doing this, i decided to have comments and then when the user searchs, it will find the best match.
