@@ -9,7 +9,7 @@
       <div class="row">
         {% for item in row %}
           <div class="col-md-4">
-            {% with image_src=item.url, title=item.name, description=item.short %}
+            {% with image_src=item.filename, title=item.name, description=item.short %}
                 {% include "includes/vegeCard.html" %}
             {% endwith %}
             
