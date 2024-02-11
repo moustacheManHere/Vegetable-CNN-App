@@ -1,5 +1,5 @@
 from application import app
-from flask import render_template
+from flask import render_template, abort
 from flask_login import current_user
 from application.forms import *
 from application.deeplearning import get_prediction
@@ -91,8 +91,15 @@ def profile():
         print("lol")
     return render_template("profile.html", title="Profile", form=profForm)
 
+@app.route("/unauthorised")
+def test_unauth_page():
+    # abort(401) to call this error. 
+    return render_template('unauthorized.html', error_code=401)
+
 @app.errorhandler(Exception)
 def handle_error(e):
     error_code = getattr(e, 'code', 500)  
     print(e)
+    if error_code == 401:
+        return render_template('unauthorized.html', error_code=error_code), error_code
     return render_template('error.html', error_code=error_code), error_code
