@@ -27,3 +27,7 @@ Setting up Docker Container to run app:
 
 Deployment:
     - Initially I faced some error trying to deploy the app and tried for a while. Eventually solved it by making "relases" a protected branch.
+
+Secrets Management:
+    - I faced a secutiry issue when deploying my docker app. in my local docker image, i configured the aws cli manually. but on docker, i will need to pass in those arguments to run.
+    - A solution I am considering is passing my aws credntial sinto the gitlab secrets file and then building a image based on it. then saving the image to my gitlab image registry and deploying to render based on it. 
