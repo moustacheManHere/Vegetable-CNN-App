@@ -80,10 +80,12 @@ def history():
     if not current_user.is_authenticated:
         abort(401)
     form = SearchForm()
+    hist_list = get_all_history()
+    print(hist_list)
     if form.validate_on_submit():
         print("lol")
-    abort(401)
-    #return render_template("history.html",form=form)
+
+    return render_template("history.html",form=form,history_data=hist_list)
 
 @app.route("/login", methods=["GET", "POST"])
 def login():

@@ -55,6 +55,14 @@ def save_to_cloud(img_data):
     return path
 
 def add_history(id, path, response, comment):
+    
     new_hist = History(id=id,vegeID=response[0],filename=path,percentage=response[1],comment=comment)
     db.session.add(new_hist)
     db.session.commit()
+
+def get_all_history(convert= True):
+    query = History.query.all()
+    if convert:
+        for i in query: # later u shld insert logic to convert base64
+            i.filename = url_to_b64(i.filename)
+    return query
