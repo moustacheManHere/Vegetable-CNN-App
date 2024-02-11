@@ -2,6 +2,8 @@ from application.forms import *
 from bs4 import BeautifulSoup
 from flask import url_for
 from application.models import *
+from flask_login import current_user
+from application.auth import checkUserCred
 
 def test_vegetable_database_add(db):
     assert db.session.query(Vegetable).count() == 15
@@ -22,6 +24,35 @@ def test_vegetable_database_query(db):
     assert vegetable.name == "Tomato"
     assert vegetable.filename == 'vgdb_15.jpg'
 
+def test_user_add_remove(db):
+    test_user = User(name='Test User', email='test2@example.com', password='password')
+    db.session.add(test_user)
+    db.session.commit()
+    retrieved_user = User.query.filter_by(id=test_user.id).first()
+
+    assert retrieved_user is not None
+    assert retrieved_user.name == 'Test User'
+    assert retrieved_user.email == 'test2@example.com'
+    assert retrieved_user.password == 'password'
+
+    entry = db.get_or_404(User, test_user.id)
+    db.session.delete(entry)
+    db.session.commit()
+    
+    retrieved_user = User.query.filter_by(id=test_user.id).first()
+    assert retrieved_user is None
+
+def test_check_login(db):
+    data = User.query.first()
+    if data is None:
+        print("no users")
+        return
+    valid_login_form = LoginForm(email=data.email, password=data.password)
+    result = checkUserCred(valid_login_form)
+    assert result is True
+    assert current_user.is_authenticated
+    assert current_user.name == data.name
+    assert current_user.email == data.email
 
 def test_predict_route(client,app, test_image):
     with app.test_request_context():
