@@ -19,3 +19,15 @@ with app.app_context():
     print("Created Database!")
 
 from application import routes
+
+
+
+def create_app(config_class):
+    app = Flask(__name__)
+    app.config.from_object(config_class)
+
+    db.init_app(app)  # Initialize SQLAlchemy with the app
+
+    from application import routes  # Import routes here to avoid circular import
+
+    return app
