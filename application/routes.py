@@ -1,9 +1,10 @@
 from application import app
-from flask import render_template, request, flash, send_from_directory, url_for
-from flask import json, jsonify
-from application.forms import UploadForm
+from flask import render_template, abort, redirect, url_for
+from flask_login import current_user,login_required, logout_user
+from application.forms import *
 from application.deeplearning import get_prediction
 from application.crud import *
+from application.auth import *
 import base64
 
 vegetable_list = [
@@ -69,9 +70,49 @@ def vege_info(id):
     
     return render_template("info.html", vegetable=vege[0])
 
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    login = LoginForm()
+    if login.validate_on_submit():
+        if checkUserCred(login):
+            return redirect(url_for("index_page"))
+        return render_template("login.html", title="Login", form=login)
+    return render_template("login.html", title="Login", form=login)
+
+@app.route("/signup", methods=["GET", "POST"])
+def signup():
+    signup = SignupForm()
+    if signup.validate_on_submit():
+        add_user(signup)
+        return redirect(url_for("index_page"))
+    return render_template("signup.html", title="Signup", form=signup)
+
+@app.route("/profile", methods=["GET", "POST"])
+def profile():
+    if not current_user.is_authenticated:
+        abort(401)
+    profForm = UpdateProfileForm()
+    if profForm.validate_on_submit():
+        updateProfile(current_user.get_id(), profForm)
+        return redirect(url_for("profile"))
+    return render_template("profile.html", title="Profile", form=profForm)
+
+@app.route("/unauthorised")
+def test_unauth_page():
+    # abort(401) to call this error. 
+    return render_template('unauthorized.html', error_code=401)
+
+@app.route("/logout")
+def logout():
+    if not current_user.is_authenticated:
+        abort(401)
+    logout_user()
+    return redirect(url_for("index_page"))
 
 @app.errorhandler(Exception)
 def handle_error(e):
     error_code = getattr(e, 'code', 500)  
     print(e)
+    if error_code == 401:
+        return render_template('unauthorized.html', error_code=error_code), error_code
     return render_template('error.html', error_code=error_code), error_code

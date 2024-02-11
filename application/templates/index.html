@@ -20,12 +20,16 @@
         <div class="col-md-6 d-flex flex-column justify-content-center">
             <div class="row">
                 <div class="col-md-12 text-center" id ="butHolder">
-                    <a href="#" class="btn btn-primary btn-lg btn-block my-3 py-4">Play a Guessing Game with Me!</a>
+                    <a href="/predict" class="btn btn-primary btn-lg btn-block my-3 py-4">Play a Guessing Game with Me!</a>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12 text-center" id ="butHolder">
-                    <a href="#" class="btn btn-success btn-lg btn-block py-4">Join my GANG!</a>
+                    {% if current_user.is_authenticated  %}
+                    <a href="/" class="btn btn-success btn-lg btn-block py-4">Our Friendship Journey...</a>
+                    {% else %}
+                        <a href="/login" class="btn btn-success btn-lg btn-block py-4">Join my GANG!</a>
+                    {% endif %}
                 </div>
             </div>
         </div>

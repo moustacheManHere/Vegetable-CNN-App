@@ -31,3 +31,5 @@ Deployment:
 Secrets Management:
     - I faced a secutiry issue when deploying my docker app. in my local docker image, i configured the aws cli manually. but on docker, i will need to pass in those arguments to run.
     - A solution I am considering is passing my aws credntial sinto the gitlab secrets file and then building a image based on it. then saving the image to my gitlab image registry and deploying to render based on it. 
+    - The previous solutij didnt work out. Another simpler solution i found is using environment varibales as stated on the aws documentation. the boto3.resource will auto detect env variabls.
+    - Even tho the tests passed in gitlab, there was a strange error with render. for somereaosn gunicorn was running out off memory. it ws very strange
