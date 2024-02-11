@@ -1,7 +1,7 @@
 from application import app
 from flask import render_template
 from flask_login import current_user
-from application.forms import UploadForm
+from application.forms import *
 from application.deeplearning import get_prediction
 from application.crud import *
 from application.auth import *
@@ -70,6 +70,12 @@ def vege_info(id):
     
     return render_template("info.html", vegetable=vege[0])
 
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    login = LoginForm()
+    if login.validate_on_submit():
+        print("lol")
+    return render_template("login.html", title="Login", form=login)
 
 @app.errorhandler(Exception)
 def handle_error(e):
