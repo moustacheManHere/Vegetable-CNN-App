@@ -101,9 +101,10 @@ def test_unauth_page():
     # abort(401) to call this error. 
     return render_template('unauthorized.html', error_code=401)
 
-@app.route("/api/logout")
-@login_required
+@app.route("/logout")
 def logout():
+    if not current_user.is_authenticated:
+        abort(401)
     logout_user()
     return redirect(url_for("index_page"))
 
