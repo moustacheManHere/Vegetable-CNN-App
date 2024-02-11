@@ -60,9 +60,10 @@ def add_history(id, path, response, comment):
     db.session.add(new_hist)
     db.session.commit()
 
-def get_all_history(convert= True):
-    query = History.query.all()
+def get_all_history(id, convert= True):
+    query = History.query.filter_by(id=id).all() 
     if convert:
         for i in query: # later u shld insert logic to convert base64
             i.filename = url_to_b64(i.filename)
     return query
+

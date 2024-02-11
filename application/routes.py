@@ -80,7 +80,7 @@ def history():
     if not current_user.is_authenticated:
         abort(401)
     form = SearchForm()
-    hist_list = get_all_history()
+    hist_list = get_all_history(current_user.get_id())
     print(hist_list)
     if form.validate_on_submit():
         print("lol")
