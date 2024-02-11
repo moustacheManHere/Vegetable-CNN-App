@@ -1,5 +1,4 @@
 application/static/uploads
 aws
 instance
-application/__pycache__
-tests/__pycache__
+**/__pycache__/*
