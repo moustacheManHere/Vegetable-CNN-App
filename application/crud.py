@@ -8,10 +8,11 @@ from io import BytesIO
 s3 = boto3.resource("s3")
 imgBucket = s3.Bucket("devops-ca2")
 
-def get_all_vegetables():
+def get_all_vegetables(convert= True):
     query = Vegetable.query.all()
-    for i in query: # later u shld insert logic to convert base64
-        i.filename = url_to_b64(i.filename)
+    if convert:
+        for i in query: # later u shld insert logic to convert base64
+            i.filename = url_to_b64(i.filename)
     return query
 
 def get_one_vegetable(id):

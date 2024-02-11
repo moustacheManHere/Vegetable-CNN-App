@@ -39,3 +39,4 @@ User Authentication:
 
 Search Feature:
     - Initially I wanted to add tags. so user can add tags to the images and search them easily later. but instead of doing this, i decided to have comments and then when the user searchs, it will find the best match.
+    - As advised for ca1, i will be dynamically generating the options instead of hard coding them for this form.

@@ -5,15 +5,22 @@ from wtforms import (
     StringField,
     PasswordField,
     FileField,
-    TextAreaField
+    TextAreaField,
+    SelectField,
+    FloatField
 )
 from wtforms.validators import (
     Optional,
     DataRequired,
     Length,
     EqualTo,
+    InputRequired
 )
 from flask_uploads import IMAGES
+from application.crud import get_all_vegetables
+from application import app
+from application.models import Vegetable
+
 
 class UploadForm(FlaskForm):
     photo = FileField(validators=[
@@ -45,3 +52,20 @@ class UpdateProfileForm(FlaskForm):
     name = StringField("Name", validators=[Optional()])
     new_password = PasswordField("New Password", validators=[Optional(), Length(min=6)])
     submit = SubmitField("Update Profile")
+
+# Init Vegetable Choices
+with app.app_context():
+    all_veges = query = Vegetable.query.all()
+vegetables = [(i.name,i.name.replace("_"," ")) for i in all_veges]
+
+class SearchForm(FlaskForm):
+    vegetable = SelectField('Vegetable', choices=vegetables, validators=[InputRequired()])
+
+    query = TextAreaField('Query', validators=[DataRequired(), Length(max=50)])  
+
+    date_choices = [(1, '1 Day Back'), (7, '7 Days Back'), (30, '30 Days Back'), ("*", "All")]
+    date = SelectField('Date', choices=date_choices, validators=[InputRequired()])
+
+    percentage = FloatField('Percentage', validators=[InputRequired(), DataRequired()], render_kw={"placeholder": "Enter a percentage between 0 and 100"})
+
+    submit = SubmitField('Submit')
