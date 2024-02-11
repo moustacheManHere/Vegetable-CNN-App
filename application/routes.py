@@ -41,9 +41,9 @@ def predict():
         img_64 = base64.b64encode(image_data).decode('utf-8')
         if current_user.is_authenticated:
             path = save_to_cloud(img_64)
-            print(path)
-            add_history(current_user.get_id(), path, response, form.comments.data)
-
+            print(response)
+            temp_hist = add_history(current_user.get_id(), path, response, form.comments.data)
+            print(temp_hist.vegeID)
     else:
         print(form.errors)
         img_64 = None
@@ -81,9 +81,11 @@ def history():
         abort(401)
     form = SearchForm()
     hist_list = get_all_history(current_user.get_id())
-    print(hist_list)
     if form.validate_on_submit():
-        print("lol")
+        hist_list = filter_history(current_user.get_id(),form)
+        for i in hist_list:
+            print(i.vegeID)
+        return render_template("history.html",form=form,history_data=hist_list)
 
     return render_template("history.html",form=form,history_data=hist_list)
 

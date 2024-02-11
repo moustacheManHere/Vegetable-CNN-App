@@ -58,7 +58,7 @@ class UpdateProfileForm(FlaskForm):
 # Init Vegetable Choices
 with app.app_context():
     all_veges = query = Vegetable.query.all()
-vegetables = [(i.name,i.name.replace("_"," ")) for i in all_veges]
+vegetables = [("*","All")] + [(i.id,i.name.replace("_"," ")) for i in all_veges]
 
 class SearchForm(FlaskForm):
     vegetable = SelectField('Prediction', choices=vegetables, validators=[InputRequired()])

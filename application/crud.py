@@ -5,6 +5,7 @@ from PIL import Image
 import base64
 from io import BytesIO
 import uuid 
+from datetime import datetime, timedelta
 
 s3 = boto3.resource("s3")
 imgBucket = s3.Bucket("devops-ca2")
@@ -56,9 +57,10 @@ def save_to_cloud(img_data):
 
 def add_history(id, path, response, comment):
     
-    new_hist = History(id=id,vegeID=response[0],filename=path,percentage=response[1],comment=comment)
+    new_hist = History(id=id,vegeID=int(response[0])+1,filename=path,percentage=float(response[1]),comment=comment)
     db.session.add(new_hist)
     db.session.commit()
+    return new_hist
 
 def get_all_history(id, convert= True):
     query = History.query.filter_by(id=id).all() 
@@ -66,4 +68,21 @@ def get_all_history(id, convert= True):
         for i in query: # later u shld insert logic to convert base64
             i.filename = url_to_b64(i.filename)
     return query
+
+def filter_history(id, form):
+    query = History.query.filter_by(id=id)
+    
+    if form.vegetable.data != "*":
+        query = query.filter_by(vegeID=int(form.vegetable.data))
+
+    if form.percentage.data is not None:
+        query = query.filter(History.percentage >= form.percentage.data)
+    
+    if form.date.data != "*":
+        start_date = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
+        end_date = start_date + timedelta(days=int(form.date.data))
+        query = query.filter(History.date >= start_date, History.date < end_date)
+
+    return query.all()
+    
 
