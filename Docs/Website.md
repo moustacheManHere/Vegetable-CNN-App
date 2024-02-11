@@ -31,3 +31,9 @@ History Search:
 
 Ideas:
     - In the /includes folder create a template that will take in any form and display its values
+
+User Authentication:
+    - For user auth, its mostly the same as CA2
+    - I edited the handling of permissions. So like if the user goes to a route they are not supposed to it will show a nice error page instead of reidrecting them to the home page. 
+    - I also edited the pytest to be more effective and only test boundary cases
+    
