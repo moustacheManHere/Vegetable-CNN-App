@@ -1,12 +1,18 @@
 from application import db
 from datetime import datetime
+from flask_login import UserMixin
 import pandas as pd
 
+class User(db.Model, UserMixin):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255), nullable=False)
+    email = db.Column(db.String(255), unique=True, nullable=False)
+    password = db.Column(db.String(255), nullable=False)
 
-from application import db
-from datetime import datetime
-import pandas as pd
-
+    def __init__(self, name, email, password):
+        self.name = name
+        self.email = email
+        self.password = password
 
 class Vegetable(db.Model):
     id = db.Column(db.Integer, primary_key=True)

@@ -1,9 +1,10 @@
 from application import app
-from flask import render_template, request, flash, send_from_directory, url_for
-from flask import json, jsonify
+from flask import render_template
+from flask_login import current_user
 from application.forms import UploadForm
 from application.deeplearning import get_prediction
 from application.crud import *
+from application.auth import *
 import base64
 
 vegetable_list = [
