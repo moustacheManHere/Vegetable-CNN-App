@@ -14,8 +14,11 @@ with app.app_context():
     from .models import *
 
     db.create_all()
-    populate_vege()
+    populate_vege(db)
     db.session.commit()
     print("Created Database!")
 
 from application import routes
+
+
+

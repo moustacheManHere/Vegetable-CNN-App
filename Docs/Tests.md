@@ -15,3 +15,7 @@ Getting Selenium Working:
     - Ok all this is very painful and doesnt seem to be working
     - I dont belieive this is the right approahc and  iwill revisit this later
 
+Struggles with DB Testing:
+    - I know for my CA1 the apporahc of adding and chaging a production db is not the best idea. So I wanted a diff approahc
+    - First I tried creating a new db during pytest and using that for the tests. As you can see in my previous commit files, it was a giant mess. idk wth i was doing and sought a simpler approach
+    - I simply use a db create and tear down function. this way when the test runs,. the db will be populated correctly and then torn down after doing so. i tested to see if it changes the actual db and it doesn't seem to . 
