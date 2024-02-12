@@ -33,3 +33,6 @@ Secrets Management:
     - A solution I am considering is passing my aws credntial sinto the gitlab secrets file and then building a image based on it. then saving the image to my gitlab image registry and deploying to render based on it. 
     - The previous solutij didnt work out. Another simpler solution i found is using environment varibales as stated on the aws documentation. the boto3.resource will auto detect env variabls.
     - Even tho the tests passed in gitlab, there was a strange error with render. for somereaosn gunicorn was running out off memory. it ws very strange
+
+Database Persistence:
+    - To ensur that my DB is persistent across the deployments, I will be using the Disks feature from render which mounts a persistance storage to each deplyoment. This allows my app to keep user data without wiping eveyrhting out everytime.
