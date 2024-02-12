@@ -33,8 +33,10 @@ def index_page():
 
 @app.route('/predict',methods=["GET","POST"])
 def predict():
+    done = False
     form = UploadForm()
     if form.validate_on_submit():
+        done = True
         photo = form.photo.data
         image_data = photo.read()
         response = get_prediction(image_data)
@@ -49,7 +51,7 @@ def predict():
         img_64 = None
         response = None
         
-    return render_template("predict.html", form = form, img_64=img_64, response = response, vegetable_list=vegetable_list) # try to have a more human response. 
+    return render_template("predict.html", form = form, img_64=img_64, response = response, vegetable_list=vegetable_list, done=done) # try to have a more human response. 
 
 @app.route('/veges')
 def vege_page():
@@ -87,7 +89,7 @@ def history():
             print(i.vegeID)
         return render_template("history.html",form=form,history_data=hist_list)
 
-    return render_template("history.html",form=form,history_data=hist_list)
+    return render_template("history.html",form=form,history_data=hist_list,vegetable_list=vegetable_list)
 
 @app.route("/login", methods=["GET", "POST"])
 def login():

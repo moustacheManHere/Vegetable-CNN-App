@@ -1,15 +1,19 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<div class="row">
-    <h1>Tommy's Friends (Will expand soon hehe...)</h1>
+<div class="row justify-content-center text-center align-items-center">
+  <h1 class="col-md-4">Tommy's Friends</h1>
+  <div class="col-md-4">
+      <img src="../static/images/cool.png" alt="" style="max-width: 80%; height: auto;">
+  </div>
 </div>
+
 <div class="container">
     {% for row in items|batch(3) %}
       <div class="row">
         {% for item in row %}
           <div class="col-md-4">
-            {% with image_src=item.filename, title=item.name, description=item.short %}
+            {% with image_src=item.filename, title=item.name, description=item.short, link=item.id %}
                 {% include "includes/vegeCard.html" %}
             {% endwith %}
             

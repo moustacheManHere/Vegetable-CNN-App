@@ -70,4 +70,4 @@ class SearchForm(FlaskForm):
 
     percentage = FloatField('Minimum %', validators=[Optional(),NumberRange(min=0, max=101, message='Must be between 0 and 100')])
 
-    submit = SubmitField('Predict')
+    submit = SubmitField('Search')
