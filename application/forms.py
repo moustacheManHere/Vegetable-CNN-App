@@ -26,7 +26,7 @@ from application.models import Vegetable
 
 class UploadForm(FlaskForm):
     photo = FileField(validators=[
-        FileAllowed(IMAGES, "Only images allowed!"), # checking file extension here
+        FileAllowed(("jpg","jpeg"), "Only jpg/jpeg images allowed!"), # checking file extension here
         FileRequired("Must have one file!")
     ])
     comments = TextAreaField("Comments") 
