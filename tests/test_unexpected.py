@@ -16,13 +16,13 @@ def test_vegetable_database_add(db):
 def test_vegetable_database_query(db):
     vegetable = db.session.query(Vegetable).first()
     assert vegetable is not None
-    assert vegetable.name == "Bean" 
-    assert vegetable.filename == 'vgdb_01.jpg'
+    assert vegetable.name == "Broccoli" 
+    assert vegetable.filename == 'vgdb_05.jpg'
 
     vegetable = db.session.query(Vegetable).order_by(Vegetable.id.desc()).first()
     assert vegetable is not None
-    assert vegetable.name == "Tomato"
-    assert vegetable.filename == 'vgdb_15.jpg'
+    assert vegetable.name == "Potato"
+    assert vegetable.filename == 'vgdb_12.jpg'
 
 def test_user_add_remove(db):
     test_user = User(name='Test User', email='test2@example.com', password='password')
@@ -67,3 +67,37 @@ def test_predict_route(client,app, test_image):
     soup = BeautifulSoup(response.data, 'html.parser')
     result_message = soup.find('h3', class_='mt-3').get_text(strip=True)
     assert "I'm" in result_message
+
+def test_history_add_remove(app, db):
+    with app.test_request_context("/history"):
+        user = User.query.first()
+        if user is None:
+            print("No users found in the database")
+            return
+
+        history_entry = History(
+            id=user.id,
+            vegeID=1,  
+            filename="test_image.jpg",
+            percentage=0.75,  
+            comment="Test comment"
+        )
+
+        # Add the history entry to the database and check
+        db.session.add(history_entry)
+        db.session.commit()
+        assert history_entry.histID is not None
+
+        # Retrieve the history entry from the database and ensure consistency
+        retrieved_entry = History.query.filter_by(histID=history_entry.histID).first()
+        assert retrieved_entry is not None
+        assert retrieved_entry.id == user.id
+        assert retrieved_entry.vegeID == 1  
+        assert retrieved_entry.filename == "test_image.jpg"
+        assert retrieved_entry.percentage == 0.75
+        assert retrieved_entry.comment == "Test comment"
+
+        # Remove the history entry from the database
+        db.session.delete(retrieved_entry)
+        db.session.commit()
+        assert History.query.get(retrieved_entry.histID) is None
