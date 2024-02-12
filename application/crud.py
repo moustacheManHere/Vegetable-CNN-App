@@ -6,6 +6,9 @@ import base64
 from io import BytesIO
 import uuid 
 from datetime import datetime, timedelta
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+from sqlalchemy import case
 
 s3 = boto3.resource("s3")
 imgBucket = s3.Bucket("devops-ca2")
@@ -82,7 +85,38 @@ def filter_history(id, form):
         start_date = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
         end_date = start_date + timedelta(days=int(form.date.data))
         query = query.filter(History.date >= start_date, History.date < end_date)
+    
+    if form.query.data not in ["", " ", None]:
+        query_order = order_by_text(query, form.query.data)
+        ordering = case({id: index for index, id in enumerate(query_order)}, value=History.histID)
+
+        ordered_query = query.order_by(ordering)
+        return ordered_query.all()
 
     return query.all()
-    
 
+
+
+def order_by_text(query, user_text):
+    batch_size = 10 
+    results = []
+    query = query.all()
+    
+    vectorizer = TfidfVectorizer()
+
+    query_tfidf = vectorizer.fit_transform([user_text])
+
+    for i in range(0, len(query), batch_size):
+        batch_comments = [comment.comment for comment in query[i:i+batch_size]]
+        tfidf_matrix_batch = vectorizer.transform(batch_comments)
+
+        similarity = cosine_similarity(tfidf_matrix_batch, query_tfidf)
+
+        batch_results = [(query[i+j].histID, similarity[j][0]) for j in range(len(batch_comments))]
+
+        results.extend(batch_results)
+
+    results = sorted(results, key=lambda x: x[1], reverse=True)
+    print(results)
+    results = [i[0] for i in results]
+    return results
