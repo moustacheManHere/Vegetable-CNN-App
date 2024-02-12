@@ -87,7 +87,7 @@ def history():
         hist_list = filter_history(current_user.get_id(),form)
         for i in hist_list:
             print(i.vegeID)
-        return render_template("history.html",form=form,history_data=hist_list)
+        return render_template("history.html",form=form,history_data=hist_list,vegetable_list=vegetable_list)
 
     return render_template("history.html",form=form,history_data=hist_list,vegetable_list=vegetable_list)
 

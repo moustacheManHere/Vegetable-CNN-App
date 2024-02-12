@@ -12,6 +12,23 @@ from sqlalchemy import case
 
 s3 = boto3.resource("s3")
 imgBucket = s3.Bucket("devops-ca2")
+vegetable_list = [
+    "Broccoli",
+    "Capsicum",
+    "Bottle_Gourd",
+    "Radish",
+    "Tomato",
+    "Brinjal",
+    "Pumpkin",
+    "Carrot",
+    "Papaya",
+    "Cabbage",
+    "Bitter_Gourd",
+    "Cauliflower",
+    "Bean",
+    "Cucumber",
+    "Potato"
+]
 
 def get_all_vegetables(convert= True):
     query = Vegetable.query.all()
@@ -113,10 +130,11 @@ def order_by_text(query, user_text):
     
     vectorizer = TfidfVectorizer()
 
-    query_tfidf = vectorizer.fit_transform([user_text])
+    query_tfidf = vectorizer.fit_transform([user_text.lower()])
 
     for i in range(0, len(query), batch_size):
-        batch_comments = [comment.comment for comment in query[i:i+batch_size]]
+        batch_comments = [comment.comment.lower() + " "+ vegetable_list[comment.vegeID-1].lower()+ " " + str(comment.percentage) + " " + str(int(comment.percentage)) for comment in query[i:i+batch_size]]
+        print(batch_comments)
         tfidf_matrix_batch = vectorizer.transform(batch_comments)
 
         similarity = cosine_similarity(tfidf_matrix_batch, query_tfidf)
