@@ -27,6 +27,22 @@ class Vegetable(db.Model):
         self.short = short
         self.description = description
 
+class History(db.Model):
+    histID = db.Column(db.Integer, primary_key=True, nullable=False)
+    id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+    vegeID = db.Column(db.Integer, db.ForeignKey("vegetable.id"), nullable=False)
+    filename = db.Column(db.String(50), nullable=False)
+    date = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)  
+    percentage = db.Column(db.Float, nullable=True)
+    comment = db.Column(db.Text, nullable=True)
+
+    def __init__(self, id, vegeID, filename, percentage=None, comment=None):
+        self.id = id
+        self.vegeID = vegeID
+        self.filename = filename
+        self.percentage = percentage
+        self.comment = comment
+
 def populate_vege(db):
     if Vegetable.query.count() ==  0:
         try:

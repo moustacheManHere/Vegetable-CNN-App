@@ -36,4 +36,8 @@ User Authentication:
     - For user auth, its mostly the same as CA2
     - I edited the handling of permissions. So like if the user goes to a route they are not supposed to it will show a nice error page instead of reidrecting them to the home page. 
     - I also edited the pytest to be more effective and only test boundary cases
-    
+
+Search Feature:
+    - Initially I wanted to add tags. so user can add tags to the images and search them easily later. but instead of doing this, i decided to have comments and then when the user searchs, it will find the best match.
+    - As advised for ca1, i will be dynamically generating the options instead of hard coding them for this form.
+    - For the comments search, i will be using TF-IDF to find the best match. basically it will calculate the frequency of terms and i will rank it using cosine similiarty to the original query. This ranking mechanism ensures that even if the user enters a weird query, there will still be reults show albeit not in the desired order. 

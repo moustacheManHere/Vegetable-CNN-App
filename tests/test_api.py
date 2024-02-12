@@ -8,6 +8,13 @@ def test_index_page(client, route):
     response = client.get(route)
     assert response.status_code == 200
 
+@pytest.mark.parametrize("vegetable_id", list(range(1, 16)))
+def test_info_page_get(client, vegetable_id, app):
+    with app.test_request_context("/info"):
+        response = client.get(f'/info/{vegetable_id}')
+        assert response.status_code == 200
+        assert b"Vegetable Details" in response.data
+
 def test_predict_page_get(client):
     response = client.get('/predict')
     assert response.status_code == 200
@@ -28,32 +35,35 @@ def test_veges_page_get(client):
     assert b"Password" in response.data
     assert b"Name" not in response.data
 
-def test_veges_page_get(client, db):
-    response = client.get('/profile')
-    assert response.status_code == 401
+def test_hist_page_get(client, app, db):
+    with app.test_request_context():
+        response = client.get('/history')
+        assert response.status_code == 401
+        valid_login_form = LoginForm(email='default@example.com', password='password')
+        result = checkUserCred(valid_login_form)
+        response = client.get('/profile')
+        assert response.status_code == 200
 
-    data = User.query.first()
-    if data is None:
-        print("no users")
-        return
-    valid_login_form = LoginForm(email=data.email, password=data.password)
-    result = checkUserCred(valid_login_form)
+def test_prof_page_get(client, db, app):
+    with app.test_request_context("/profile"):
+        response = client.get('/profile')
+        assert response.status_code == 401
 
-    response = client.get('/profile')
-    assert response.status_code == 200
+        valid_login_form = LoginForm(email='default@example.com', password="password")
+        result = checkUserCred(valid_login_form)
+
+        response = client.get('/profile')
+        assert response.status_code == 200
 
 def test_veges_page_get(client):
     response = client.get('/signup')
     assert response.status_code == 200
     assert b"Password" in response.data
     assert b"Name" in response.data
-    
 
-@pytest.mark.parametrize("vegetable_id", list(range(1, 16)))
-def test_info_page_get(client, vegetable_id):
-    response = client.get(f'/info/{vegetable_id}')
-    assert response.status_code == 200
-    assert b"Vegetable Details" in response.data
+
+
+
 
 
 

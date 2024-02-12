@@ -8,21 +8,21 @@ from application.auth import *
 import base64
 
 vegetable_list = [
-    "Bean",
-    "Bitter_Gourd",
-    "Bottle_Gourd",
-    "Brinjal",
     "Broccoli",
-    "Cabbage",
     "Capsicum",
-    "Carrot",
-    "Cauliflower",
-    "Cucumber",
-    "Papaya",
-    "Potato",
-    "Pumpkin",
+    "Bottle_Gourd",
     "Radish",
-    "Tomato"
+    "Tomato",
+    "Brinjal",
+    "Pumpkin",
+    "Carrot",
+    "Papaya",
+    "Cabbage",
+    "Bitter_Gourd",
+    "Cauliflower",
+    "Bean",
+    "Cucumber",
+    "Potato"
 ]
 
 @app.route('/')
@@ -39,6 +39,11 @@ def predict():
         image_data = photo.read()
         response = get_prediction(image_data)
         img_64 = base64.b64encode(image_data).decode('utf-8')
+        if current_user.is_authenticated:
+            path = save_to_cloud(img_64)
+            print(response)
+            temp_hist = add_history(current_user.get_id(), path, response, form.comments.data)
+            print(temp_hist.vegeID)
     else:
         print(form.errors)
         img_64 = None
@@ -69,6 +74,20 @@ def vege_info(id):
         raise ValueError() 
     
     return render_template("info.html", vegetable=vege[0])
+
+@app.route("/history", methods=["GET", "POST"])
+def history():
+    if not current_user.is_authenticated:
+        abort(401)
+    form = SearchForm()
+    hist_list = get_all_history(current_user.get_id())
+    if form.validate_on_submit():
+        hist_list = filter_history(current_user.get_id(),form)
+        for i in hist_list:
+            print(i.vegeID)
+        return render_template("history.html",form=form,history_data=hist_list)
+
+    return render_template("history.html",form=form,history_data=hist_list)
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -108,6 +127,12 @@ def logout():
         abort(401)
     logout_user()
     return redirect(url_for("index_page"))
+
+@app.route("/removeHist/<histid>", methods=["POST"])
+def removeHist(histid):
+    if current_user.is_authenticated:
+        remove_hist(histid)
+        return redirect(url_for("history"))
 
 @app.errorhandler(Exception)
 def handle_error(e):
