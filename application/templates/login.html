@@ -3,6 +3,11 @@
 {% block content %}
 
 <div class="container mt-4">
+    {% if not success %}
+    <div class="alert alert-danger text-center mt-3" role="alert">
+      I don't seem to recognise you... Are you impersonating my friend!
+    </div>
+    {% endif %}
     <form method="POST" action="{{ url_for('login') }}">
       {{ form.hidden_tag() }}
       <div class="mb-3">
@@ -22,7 +27,7 @@
       {{ form.submit(class_='btn btn-primary') }}
     </form>
     <hr>
-    <p>Dont have an account? <a href="/signup">Signup</a></p>
+    <p>Not a friend yet? <a href="/signup">Signup</a></p>
   </div>
   
 {% endblock content %}

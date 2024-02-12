@@ -97,8 +97,8 @@ def login():
     if login.validate_on_submit():
         if checkUserCred(login):
             return redirect(url_for("index_page"))
-        return render_template("login.html", title="Login", form=login)
-    return render_template("login.html", title="Login", form=login)
+        return render_template("login.html", title="Login", form=login, success=False)
+    return render_template("login.html", title="Login", form=login, success=True)
 
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
