@@ -61,3 +61,11 @@ INVALID_PATHS = ["/", "/veges", "/predict", "/login", "/signup", "/profile"]
 def test_invalid_methods(client, method, path):
     response = client.open(path, method=method)
     assert response.status_code != 405
+
+@pytest.mark.xfail
+def test_history_add_remove_incomplete(app, db):
+    with app.test_request_context("/history"):
+        invalid_entry = History(id=1)
+        db.session.add(invalid_entry)
+        db.session.commit()
+        assert history_entry.histID is not None 

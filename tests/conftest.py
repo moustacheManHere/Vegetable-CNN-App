@@ -3,7 +3,9 @@ from application import app as application
 from application import db as database
 import os 
 import io
-from application.models import populate_vege
+from application.models import populate_vege, User
+from flask_bcrypt import Bcrypt
+bcrypt = Bcrypt()
 
 @pytest.fixture
 def app():
@@ -25,5 +27,9 @@ def db(app):
     with app.app_context():
         database.create_all()
         populate_vege(database)
+        password = bcrypt.generate_password_hash('password')
+        user = User(name='default_user', email='default@example.com', password=password)
+        database.session.add(user)
+        database.session.commit()
         yield database
         database.drop_all()

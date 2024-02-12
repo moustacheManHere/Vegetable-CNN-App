@@ -42,17 +42,14 @@ def test_user_add_remove(db):
     retrieved_user = User.query.filter_by(id=test_user.id).first()
     assert retrieved_user is None
 
-def test_check_login(db):
-    data = User.query.first()
-    if data is None:
-        print("no users")
-        return
-    valid_login_form = LoginForm(email=data.email, password=data.password)
-    result = checkUserCred(valid_login_form)
-    assert result is True
-    assert current_user.is_authenticated
-    assert current_user.name == data.name
-    assert current_user.email == data.email
+def test_check_login(db, app):
+    with app.test_request_context():
+        valid_login_form = LoginForm(email='default@example.com', password='password')
+        result = checkUserCred(valid_login_form)
+        assert result is True
+        assert current_user.is_authenticated
+        assert current_user.name == 'default_user'
+        assert current_user.email == 'default@example.com'
 
 def test_predict_route(client,app, test_image):
     with app.test_request_context():
@@ -70,13 +67,10 @@ def test_predict_route(client,app, test_image):
 
 def test_history_add_remove(app, db):
     with app.test_request_context("/history"):
-        user = User.query.first()
-        if user is None:
-            print("No users found in the database")
-            return
+
 
         history_entry = History(
-            id=user.id,
+            id=1,
             vegeID=1,  
             filename="test_image.jpg",
             percentage=0.75,  
@@ -91,7 +85,7 @@ def test_history_add_remove(app, db):
         # Retrieve the history entry from the database and ensure consistency
         retrieved_entry = History.query.filter_by(histID=history_entry.histID).first()
         assert retrieved_entry is not None
-        assert retrieved_entry.id == user.id
+        assert retrieved_entry.id == 1
         assert retrieved_entry.vegeID == 1  
         assert retrieved_entry.filename == "test_image.jpg"
         assert retrieved_entry.percentage == 0.75
@@ -100,4 +94,4 @@ def test_history_add_remove(app, db):
         # Remove the history entry from the database
         db.session.delete(retrieved_entry)
         db.session.commit()
-        assert History.query.get(retrieved_entry.histID) is None
+        assert History.query.filter_by(histID=retrieved_entry.histID).first() is None
