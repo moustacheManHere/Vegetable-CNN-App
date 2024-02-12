@@ -128,6 +128,12 @@ def logout():
     logout_user()
     return redirect(url_for("index_page"))
 
+@app.route("/removeHist/<histid>", methods=["POST"])
+def removeHist(histid):
+    if current_user.is_authenticated:
+        remove_hist(histid)
+        return redirect(url_for("history"))
+
 @app.errorhandler(Exception)
 def handle_error(e):
     error_code = getattr(e, 'code', 500)  

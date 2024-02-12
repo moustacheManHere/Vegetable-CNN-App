@@ -37,6 +37,15 @@ def url_to_b64(url):
     
     return "data:image/jpeg;charset=utf-8;base64,"+base64_image
 
+def remove_hist(id):
+    try:
+        entry = db.get_or_404(History, id)
+        db.session.delete(entry)
+        db.session.commit()
+    except Exception as error:
+        print(error)
+        db.session.rollback()
+        return 0
 
 def save_to_cloud(img_data):
     # data must be base64
