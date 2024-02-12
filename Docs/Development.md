@@ -36,3 +36,4 @@ Secrets Management:
 
 Database Persistence:
     - To ensur that my DB is persistent across the deployments, I will be using the Disks feature from render which mounts a persistance storage to each deplyoment. This allows my app to keep user data without wiping eveyrhting out everytime.
+    - Nvm I will abandon this experiment as most of such services are paid and im not allowed to use them for assignment. 
