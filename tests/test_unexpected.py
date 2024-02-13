@@ -55,7 +55,7 @@ def test_predict_route(client,app, test_image):
     with app.test_request_context():
         response = client.post(
             url_for('predict'),
-            data={'photo': (test_image, 'test.png')},
+            data={'photo': (test_image, 'test.jpg')},
             content_type='multipart/form-data'
         )
     assert response.status_code == 200
